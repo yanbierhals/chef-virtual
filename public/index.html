@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente Virtual - Gemini 2.0 Flash Lite</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <h1>Assistente Virtual</h1>
+                </div>
+                <div class="header-info">
+                    <span class="powered-by">Powered by Gemini 2.0 Flash Lite</span>
+                    <button class="btn-historico" onclick="toggleHistorico()">
+                        <i class="fas fa-history"></i>
+                        Histórico
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar com seleção de assistente -->
+            <aside class="sidebar">
+                <div class="assistente-selector">
+                    <h3>Escolha seu Assistente</h3>
+                    <div class="assistentes-list" id="assistentesList">
+                        <!-- Assistentes serão carregados dinamicamente -->
+                    </div>
+                </div>
+                
+                <div class="info-panel">
+                    <h4>Informações</h4>
+                    <div class="info-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>30 RPM</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Resposta rápida</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-brain"></i>
+                        <span>IA Avançada</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Chat Area -->
+            <section class="chat-section">
+                <div class="chat-header">
+                    <div class="assistente-atual" id="assistenteAtual">
+                        <i class="fas fa-robot"></i>
+                        <span>Selecione um assistente para começar</span>
+                    </div>
+                    <button class="btn-limpar" onclick="limparChat()">
+                        <i class="fas fa-trash"></i>
+                        Limpar Chat
+                    </button>
+                </div>
+
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message-welcome">
+                            <div class="welcome-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3>Bem-vindo ao Assistente Virtual!</h3>
+                            <p>Selecione um assistente especializado na barra lateral para começar nossa conversa.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="chatInput" 
+                            placeholder="Digite sua mensagem..." 
+                            disabled
+                        >
+                        <button id="sendButton" onclick="enviarMensagem()" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="input-info">
+                        <span class="typing-indicator" id="typingIndicator" style="display: none;">
+                            <i class="fas fa-circle"></i>
+                            <i class="fas fa-circle"></i>
+                            <i class="fas fa-circle"></i>
+                            Assistente está digitando...
+                        </span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal de Histórico -->
+        <div class="modal-overlay" id="modalHistorico" style="display: none;">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>Histórico de Conversas</h3>
+                    <button class="btn-close" onclick="toggleHistorico()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-content">
+                    <div id="historicoContent">
+                        <p>Carregando histórico...</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="limparHistorico()">
+                        <i class="fas fa-trash"></i>
+                        Limpar Histórico
+                    </button>
+                    <button class="btn-primary" onclick="toggleHistorico()">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-robot fa-spin"></i>
+            <p>Carregando assistentes...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
